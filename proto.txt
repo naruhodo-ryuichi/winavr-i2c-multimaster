@@ -1,0 +1,56 @@
+i2c packet:
+
+	0xaa 0xbb 0xcc 0xdd 0xee
+
+	0xaa: Dest Address (xxxyyyy(r/w))
+	
+	0xbb: Source address (xxxyyyy(NA))
+
+	0xcc: Message Type 
+		0x00: Heartbeat
+		0x01: Heartbeat stop
+		0x02: Command
+		0x03: Status
+		0x04: Trigger
+
+	0xdd: Key
+
+	0xee: Value
+
+Address descriptor:
+
+	xxx: Location
+		000: AllRooms
+		001: GuestRoom
+		010: LivingRoom
+		011: Lounge
+		100: Bedroom
+		101: Kitchen
+		110: Bathroom
+		111: Hallway
+		
+	yyyy: Device
+		0000: AllInputs
+		0001: ADC 1 (Temperature)
+		0010: ADC 2 (Light)
+		0011: ADC3
+		0100: ADC4
+		0101: Switch 1
+		0110: Switch 2
+		0111: Switch 3
+		1000: AllOutputs
+		1001: Relay 1
+		1010: Relay 2
+		1011: Relay 3
+		1100: Relay 4
+		1101: PWM 1
+		1110: PWM 2
+		1111: PWM 3
+
+Network structure:
+	1 controller per room
+	14 i/o devices per controller
+	
+Network protocol:
+	Device 1 poll: (address 0x00)
+	Device n on -  
